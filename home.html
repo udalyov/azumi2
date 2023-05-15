@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+	<title>Главная</title>
+	<meta charset="UTF-8">
+	<meta name="format-detection" content="telephone=no">
+	<!-- <style>body{opacity: 0;}</style> -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap&_v=20230426164642" rel="stylesheet">
+	<link rel="stylesheet" href="css/style.min.css?_v=20230426164642">
+	<link rel="shortcut icon" href="favicon.ico">
+	<!-- <meta name="robots" content="noindex, nofollow"> -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+
+<body>
+	<div class="wrapper">
+		<header class="header">
+			<div class="header__container">
+				<a href="" class="header__logo"><picture><source srcset="img/logo.webp" type="image/webp"><img src="img/logo.png" alt=""></picture></a>
+				<a href="tel:6562065171" class="header__phone">(65) 62065171</a>
+				<a href="mailto:accounts@smith.sg" class="header__mail">accounts@smith.sg</a>
+				<div class="header__country">
+					<picture><source srcset="img/country.webp" type="image/webp"><img src="img/country.png" alt=""></picture>
+					<span>We are in Singapore</span>
+				</div>
+				<a href="#footer" class="header__button">Contact us</a>
+			</div>
+		</header>
+		<main class="page">
+			<div class="first-block">
+				<div class="first-block__container">
+					<div class="first-block__content">
+						<h1 class="first-block__title">RMP TECHTRADE</h1>
+						<a href="" class="first-block__link">Car Parts Distribution</a>
+						<div class="first-block__desrc">RMP TECHTRADE takes over the path from the manufacturer to your car!</div>
+					</div>
+				</div>
+				<div class="first-block__image-ibg"><picture><source srcset="img/main-bg.webp" type="image/webp"><img src="img/main-bg.png" alt=""></picture></div>
+			</div>
+			<div class="center-block">
+				<div class="center-block__container">
+					<div class="center-block__logo"><picture><source srcset="img/center-logo.webp" type="image/webp"><img src="img/center-logo.png" alt=""></picture></div>
+					<div class="center-block__content">
+						<h2 class="center-block__title">The distribution of automotive parts is an important part of the procurement process for millions of vehicles around the world. </h2>
+						<div class="center-block__descr">And we certainly know how to do it at the highest level:</div>
+						<ul class="center-block__list">
+							<li class="center-block__item">spacious warehouses and large stock</li>
+							<li class="center-block__item">a wide range of products</li>
+							<li class="center-block__item">fast and convenient part search process</li>
+							<li class="center-block__item">extensive coverage of vehicles types.</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</main>
+		<footer class="footer" id="footer">
+			<div class="footer__container">
+				<div class="footer__content">
+					<a href="" class="footer__logo"><picture><source srcset="img/footer-logo.webp" type="image/webp"><img src="img/footer-logo.png" alt=""></picture></a>
+					<div class="footer__col">
+						<div class="footer__title">
+							RMP TECHTRADE <br>
+							PTE. LTD.
+						</div>
+						<a href="tel:+6567495339 " class="footer__link"><img src="img/header_phone.svg" alt=""><span>+65 6749 5339 </span></a>
+						<div class="footer__addres"><img src="img/map.svg" alt=""><span>175A BENCOOLEN STREET #07-02 BURLINGTON SQUARE SINGAPORE (189650)</span></div>
+					</div>
+				</div>
+				<div class="footer__map">
+					<div id="map"></div>
+					<script>
+						function mapAdd() {
+							let tag = document.createElement('script');
+							tag.src = "https://maps.google.com/maps/api/js?sensor=false&amp;key=&callback=mapInit";
+							let firstScriptTag = document.getElementsByTagName('script')[0];
+							firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+						}
+
+						function mapInit(n = 1) {
+							google.maps.Map.prototype.setCenterWithOffset = function(latlng, offsetX, offsetY) {
+								var map = this;
+								var ov = new google.maps.OverlayView();
+								ov.onAdd = function() {
+									var proj = this.getProjection();
+									var aPoint = proj.fromLatLngToContainerPixel(latlng);
+									aPoint.x = aPoint.x + offsetX;
+									aPoint.y = aPoint.y + offsetY;
+									map.panTo(proj.fromContainerPixelToLatLng(aPoint));
+									//map.setCenter(proj.fromContainerPixelToLatLng(aPoint));
+								}
+								ov.draw = function() {};
+								ov.setMap(this);
+							};
+							var markers = new Array();
+							var infowindow = new google.maps.InfoWindow({
+								//pixelOffset: new google.maps.Size(-230,250)
+							});
+							var locations = [
+								[new google.maps.LatLng(1.3020268, 103.85231)],
+							]
+							var options = {
+								zoom: 13,
+								panControl: false,
+								mapTypeControl: false,
+								center: locations[0][0],
+								styles: [{
+									"featureType": "landscape.natural",
+									"elementType": "geometry.fill",
+									"stylers": [{
+										"visibility": "on"
+									}, {
+										"color": "#e0efef"
+									}]
+								}, {
+									"featureType": "poi",
+									"elementType": "geometry.fill",
+									"stylers": [{
+										"visibility": "on"
+									}, {
+										"hue": "#1900ff"
+									}, {
+										"color": "#c0e8e8"
+									}]
+								}, {
+									"featureType": "road",
+									"elementType": "geometry",
+									"stylers": [{
+										"lightness": 100
+									}, {
+										"visibility": "simplified"
+									}]
+								}, {
+									"featureType": "road",
+									"elementType": "labels",
+									"stylers": [{
+										"visibility": "off"
+									}]
+								}, {
+									"featureType": "transit.line",
+									"elementType": "geometry",
+									"stylers": [{
+										"visibility": "on"
+									}, {
+										"lightness": 700
+									}]
+								}, {
+									"featureType": "water",
+									"elementType": "all",
+									"stylers": [{
+										"color": "#7dcdcd"
+									}]
+								}],
+								scrollwheel: false,
+								mapTypeId: google.maps.MapTypeId.ROADMAP
+							};
+							var map = new google.maps.Map(document.getElementById('map'), options);
+							var icon = {
+								url: 'img/map.svg',
+								scaledSize: new google.maps.Size(18, 20),
+								anchor: new google.maps.Point(9, 10)
+							}
+							for (var i = 0; i < locations.length; i++) {
+								var marker = new google.maps.Marker({
+									icon: icon,
+									position: locations[i][0],
+									map: map,
+								});
+								google.maps.event.addListener(marker, 'click', (function(marker, i) {
+									return function() {
+										for (var m = 0; m < markers.length; m++) {
+											markers[m].setIcon(icon);
+										}
+										var cnt = i + 1;
+										//infowindow.setContent(document.querySelector('.events-map__item_' + cnt).innerHTML);
+										//infowindow.open(map, marker);
+										marker.setIcon(icon);
+										map.setCenterWithOffset(marker.getPosition(), 0, 0);
+										setTimeout(function() {
+
+										}, 10);
+									}
+								})(marker, i));
+								markers.push(marker);
+							}
+							if (n) {
+								var nc = n - 1;
+								setTimeout(function() {
+									google.maps.event.trigger(markers[nc], 'click');
+								}, 500);
+							}
+						}
+						if (document.querySelector('#map')) {
+							mapAdd();
+						}
+					</script>
+				</div>
+			</div>
+		</footer>
+	</div>
+	<script src="js/app.min.js?_v=20230426164642"></script>
+</body>
+
+</html>
